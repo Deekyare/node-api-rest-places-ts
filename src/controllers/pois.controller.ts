@@ -17,7 +17,7 @@ export const createPoi = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const poi = await prisma.pOI.create({
+    const poi = await prisma. POI.create({
       data: {
         nombre,
         descripcion,
@@ -44,7 +44,7 @@ export const createPoi = async (req: Request, res: Response): Promise<void> => {
 
 export const getAllPoi = async (req: Request, res: Response): Promise<void> => {
   try {
-    const poises = await prisma.pOI.findMany();
+    const poises = await prisma.POI.findMany();
     res.status(200).json(poises);
   } catch (error: any) {
     console.log(error);
@@ -58,7 +58,7 @@ export const getPoiById = async (
 ): Promise<void> => {
   const poiId = parseInt(req.params.poi);
   try {
-    const poi = await prisma.pOI.findUnique({
+    const poi = await prisma.POI.findUnique({
       where: {
         id: poiId,
       },
@@ -91,7 +91,7 @@ export const updatePoi = async (req: Request, res: Response): Promise<void> => {
       dataToUpdate.imagen = imagen;
     }
 
-    const updatedPoi = await prisma.pOI.update({
+    const updatedPoi = await prisma.POI.update({
       where: {
         id: poiId,
       },
@@ -108,7 +108,7 @@ export const updatePoi = async (req: Request, res: Response): Promise<void> => {
 export const deletePoi = async (req: Request, res: Response): Promise<void> => {
   const poiId = parseInt(req.params.poi);
   try {
-    await prisma.pOI.delete({
+    await prisma.POI.delete({
       where: {
         id: poiId,
       },
