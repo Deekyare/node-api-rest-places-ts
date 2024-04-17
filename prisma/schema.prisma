@@ -23,7 +23,7 @@ model Place {
   tipo        String
 }
 
-model poi {
+model POI {
   id          Int       @id @default(autoincrement())
   nombre      String    @unique
   descripcion String
