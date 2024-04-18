@@ -19,16 +19,16 @@ model Place {
   nombre      String    @unique
   descripcion String
   imagen      String
-  imperdibles POI[]     @relation("PlaceToPOI")
+  imperdibles Poi[]     @relation("PlaceToPoi")
   tipo        String
 }
 
-model POI {
+model Poi {
   id          Int       @id @default(autoincrement())
   nombre      String    @unique
   descripcion String
   imagen      String
   tipo        String
-  place       Place?    @relation("PlaceToPOI", fields: [placeId], references: [id])
+  place       Place?    @relation("PlaceToPoi", fields: [placeId], references: [id])
   placeId     Int?
 }

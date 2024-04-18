@@ -10,7 +10,7 @@ CREATE TABLE "Place" (
 );
 
 -- CreateTable
-CREATE TABLE "POI" (
+CREATE TABLE "Poi" (
     "id" SERIAL NOT NULL,
     "nombre" TEXT NOT NULL,
     "descripcion" TEXT NOT NULL,
@@ -18,10 +18,14 @@ CREATE TABLE "POI" (
     "tipo" TEXT NOT NULL,
     "placeId" INTEGER,
 
-    CONSTRAINT "POI_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Poi_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "place_nombre_key" ON "place"("name");
+CREATE UNIQUE INDEX "Place_nombre_key" ON "Place"("nombre");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Poi_nombre_key" ON "Poi"("nombre");
+
 -- AddForeignKey
-ALTER TABLE "POI" ADD CONSTRAINT "POI_placeId_fkey" FOREIGN KEY ("placeId") REFERENCES "Place"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Poi" ADD CONSTRAINT "Poi_placeId_fkey" FOREIGN KEY ("placeId") REFERENCES "Place"("id") ON DELETE SET NULL ON UPDATE CASCADE;
